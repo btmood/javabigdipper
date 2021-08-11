@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: web
+  profiles:
+    active: dev
+
+logging:
+  config: classpath:log4j2-dev.xml

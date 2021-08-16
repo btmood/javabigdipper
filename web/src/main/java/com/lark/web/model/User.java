@@ -1,10 +1,8 @@
 package com.lark.web.model;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.util.Date;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -89,13 +87,13 @@ public class User implements Serializable {
     /**
      * 创建时间
      */
-    @TableField("CREATE_TIME")
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
     /**
      * 修改时间
      */
-    @TableField("MODIFY_TIME")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date modifyTime;
 
 

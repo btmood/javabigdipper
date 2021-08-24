@@ -31,6 +31,8 @@
         <fastjson.version>1.2.47</fastjson.version>
         <aspectj.version>1.6.10</aspectj.version>
         <cglib.version>2.2.2</cglib.version>
+        <httpclient.version>4.5.2</httpclient.version>
+        <htmlcleaner.version>2.10</htmlcleaner.version>
     </properties>
     <dependencies>
         <dependency>
@@ -108,6 +110,18 @@
                 <groupId>cglib</groupId>
                 <artifactId>cglib</artifactId>
                 <version>${cglib.version}</version>
+            </dependency>
+            <!-- httpclient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/net.sourceforge.htmlcleaner/htmlcleaner -->
+            <dependency>
+                <groupId>net.sourceforge.htmlcleaner</groupId>
+                <artifactId>htmlcleaner</artifactId>
+                <version>${htmlcleaner.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

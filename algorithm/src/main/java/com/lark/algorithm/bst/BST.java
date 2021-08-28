@@ -390,6 +390,77 @@ public class BST<E extends Comparable<E>> {
         return node;
     }
 
+    /**
+     * 从二分搜索树中删除元素为e的节点
+     * @param e
+     */
+    public void remove(E e) {
+        root = remove(root, e);
+    }
+
+    /**
+     * 递归：返回删除节点后新的二分搜索树的根
+     * @param node
+     * @param e
+     * @return
+     */
+    public Node remove(Node node, E e) {
+        if (node == null) {
+            return null;
+        }
+        if (e.compareTo(node.e) < 0) {
+            node.left = remove(node.left, e);
+            return node;
+        } else if (e.compareTo(node.e) > 0) {
+            node.right = remove(node.right, e);
+            return node;
+        } else {
+            /**
+             * 当e==node.e时又要分为三种情况考虑
+             * 1. 待删除节点左子树为空
+             * 2. 待删除节点右子树为空
+             * 3. 待删除节点左右子树都不为空
+             */
+            //1. 待删除节点左子树为空
+            if (node.left == null) {
+                Node rightNode = node.right;
+                node.right = null;
+                size--;
+                return rightNode;
+            }
+            //2. 待删除节点右子树为空
+            if (node.right == null) {
+                Node leftNode = node.left;
+                node.left = null;
+                size--;
+                return leftNode;
+            }
+            /**
+             * 3. 待删除节点左右子树都不为空
+             * 找到比待删除节点大的最小节点，即为待删除节点右子树的最小节点
+             * 用这个节点顶替待删除节点的位置
+             */
+            Node successor = minimum(node.right);
+            //注意这里虽然删除了元素但是并不需要size--，因为removeMin()这个方法已经减过了
+            successor.right = removeMin(node.right);
+            successor.left = node.left;
+            successor.left = null;
+            successor.right = null;
+
+            return successor;
+        }
+    }
+
+    /**
+     * TODO：通过前驱删除左右子树不为空的情况
+     * @param node
+     * @param e
+     * @return
+     */
+    public Node removeOnPrecursor(Node node, E e) {
+        return null;
+    }
+
 
     @Override
     public String toString() {

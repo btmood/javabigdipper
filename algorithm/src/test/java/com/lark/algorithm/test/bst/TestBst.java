@@ -69,5 +69,6 @@ public class TestBst {
             }
         }
         System.out.println("成功");
+
     }
 }

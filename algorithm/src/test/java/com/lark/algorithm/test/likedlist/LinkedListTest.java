@@ -28,6 +28,11 @@ public class LinkedListTest {
 
         linkedList.removeLast();
         System.out.println(linkedList);
+
+        System.out.println(linkedList.getSize());
+        linkedList.removeElement(2);
+        System.out.println(linkedList);
+        System.out.println(linkedList.getSize());
     }
 
 }

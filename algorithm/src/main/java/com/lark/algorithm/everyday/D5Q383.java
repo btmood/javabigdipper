@@ -48,7 +48,7 @@ public class D5Q383 {
         return true;
     }
 
-    public boolean canConstruct(String ransomNote, String magazine) {
+    public static boolean canConstruct2(String ransomNote, String magazine) {
         Map<Character, Integer> frequency = new HashMap<>();
         for (Character c : magazine.toCharArray()) {
             frequency.put(c, frequency.getOrDefault(c, 0) + 1);
@@ -62,6 +62,23 @@ public class D5Q383 {
                 }
             } else {
                 return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean canConstruct3(String ransomNote, String magazine) {
+        int[] mapArr = new int[128];
+        char[] c1 = magazine.toCharArray();
+        char[] c2 = ransomNote.toCharArray();
+        for (Character c : c1) {
+            mapArr[c]++;
+        }
+        for (Character c : c2) {
+            if (mapArr[c] == 0) {
+                return false;
+            } else {
+                mapArr[c]--;
             }
         }
         return true;

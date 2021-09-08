@@ -1,5 +1,7 @@
 package com.lark.algorithm.array;
 
+import org.omg.CORBA.Object;
+
 import java.util.Objects;
 
 /**
@@ -23,6 +25,14 @@ public class Array<E> {
 
     public Array() {
         this(10);
+    }
+
+    public Array(E[] arr) {
+        data = (E[]) new Object[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
+        size = arr.length;
     }
 
     /**
@@ -220,6 +230,20 @@ public class Array<E> {
             newData[i] = data[i];
         }
         data = newData;
+    }
+
+    /**
+     * 交换i,j两个索引位置的元素
+     * @param i
+     * @param j
+     */
+    public void swap(int i , int j ) {
+        if (i < 0 || i >= size || j < 0 || j >= size) {
+            throw new IllegalArgumentException("Index is illegal");
+        }
+        E t = data[i];
+        data[i] = data[j];
+        data[j] = t;
     }
 
     @Override

@@ -444,8 +444,8 @@ public class BST<E extends Comparable<E>> {
             //注意这里虽然删除了元素但是并不需要size--，因为removeMin()这个方法已经减过了
             successor.right = removeMin(node.right);
             successor.left = node.left;
-            successor.left = null;
-            successor.right = null;
+            node.left = null;
+            node.right = null;
 
             return successor;
         }

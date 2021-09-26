@@ -1,10 +1,8 @@
-package com.lark.algorithm.everyday;
+package com.lark.algorithm.everyday.others;
 
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 
 /**
  * @ClassName: D15Q447

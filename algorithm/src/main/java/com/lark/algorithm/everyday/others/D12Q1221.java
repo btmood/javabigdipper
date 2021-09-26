@@ -1,4 +1,4 @@
-package com.lark.algorithm.everyday;
+package com.lark.algorithm.everyday.others;
 
 /**
  * @ClassName: D12Q1221

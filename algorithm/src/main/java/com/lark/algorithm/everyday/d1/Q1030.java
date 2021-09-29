@@ -103,5 +103,4 @@ public class Q1030 {
         Q1030 q = new Q1030();
         int[][] ints = q.allCellsDistOrder2(80, 57, 19, 38);
         System.out.println(Arrays.deepToString(ints));
-    }
-}
+    }}

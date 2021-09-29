@@ -1,23 +1,38 @@
 package com.lark.algorithm.sort;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * @author btmood
- * @date 2021-09-24 20:07
- * @Description 归并排序
+ * @date 2021-09-25 10:16
+ * @Description 非泛型归并排序
  */
-public class MergeSort<E extends Comparable<E>> {
+public class MergeSort {
 
-    public E[] doSort(E[] arr) {
-        List<E> t = new ArrayList<>(arr.length);
-//        E[] t = (E[]) new Object[arr.length];
+    public int[] doSort(int[] arr) {
+        int[] t = new int[arr.length];
         return doMergeSort(arr, t, 0, arr.length - 1);
     }
 
-    private E[] doMergeSort(E[] arr, List<E> t, int left, int right) {
+    /**
+     * 递归排序
+     * 算法步骤：
+     * （1）创建一个临时数组，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列
+     * （2）设定两个指针，最初位置分别为两个已经排序序列的起始位置
+     * （3）比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置
+     * （4）重复步骤3直到某一指针到达序列尾
+     * （5）将另一序列剩下的所有元素直接复制到合并序列尾
+     * 时间复杂度：
+     *      O(nlogn)
+     * 稳定性：
+     *      由于通过临时数组复制数据到原数组，所以是稳定的
+     * @param arr
+     * @param t
+     * @param left
+     * @param right
+     * @return
+     */
+    private int[] doMergeSort(int[] arr, int[] t, int left, int right) {
         if (left < right) {
             int middle = (left + right) / 2;
             doMergeSort(arr, t, left, middle);
@@ -27,28 +42,34 @@ public class MergeSort<E extends Comparable<E>> {
         return arr;
     }
 
-    private void mergeArr(E[] arr, List<E> t, int left, int middle, int right) {
+    /**
+     * 利用三个指针合并两个有序数组
+     * 合并两个有序数组：典型的双指针解法
+     * @param arr
+     * @param t
+     * @param left
+     * @param middle
+     * @param right
+     */
+    private void mergeArr(int[] arr, int[] t, int left, int middle, int right) {
         int i = left;
         int j = middle + 1;
         int k = 0;
         while (i <= middle && j <= right) {
-            if (arr[i].compareTo(arr[j]) > 0) {
-                t.add(k++, arr[j++]);
+            if (arr[i] > arr[j]) {
+                t[k++] = arr[j++];
             } else {
-                t.add(k++, arr[i++]);
+                t[k++] = arr[i++];
             }
         }
         while (i <= middle) {
-            t.set(k++, arr[i++]);
+            t[k++] = arr[i++];
         }
-        System.out.println("i = " + i);
         while (j <= right) {
-            t.set(k++, arr[j++]);
+            t[k++] = arr[j++];
         }
-        System.out.println("j = " + j);
         for (i = 0; i < k; i++) {
-            arr[left + i] = t.get(i);
+            arr[left + i] = t[i];
         }
     }
-
 }

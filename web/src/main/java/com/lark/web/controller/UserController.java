@@ -5,16 +5,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lark.web.model.User;
 import com.lark.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.sql.Wrapper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,12 +30,17 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @PostMapping("getAll")
     public Map<String, Object> getAll() {
         Map<String, Object> map = new HashMap<>();
+//        redisTemplate.opsForValue().set("aa", "测试");
+        String aa = (String) redisTemplate.opsForValue().get("aa");
         List<User> list = userService.list();
         map.put("userList", list);
+        map.put("aa", aa);
         return map;
     }
 

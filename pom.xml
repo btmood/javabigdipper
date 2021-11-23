@@ -71,6 +71,22 @@
             <artifactId>commons-collections</artifactId>
             <version>3.2.2</version>
         </dependency>
+        <!-- Spring Boot Redis依赖 -->
+        <!-- 注意：1.5版本的依赖和2.0的依赖不一样，注意看哦 1.5我记得名字里面应该没有“data”, 2.0必须是“spring-boot-starter-data-redis” 这个才行-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>redis.clients</groupId>
+                    <artifactId>jedis</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.lettuce</groupId>
+                    <artifactId>lettuce-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
     </dependencies>
 
@@ -134,6 +150,20 @@
                 <groupId>net.sourceforge.htmlcleaner</groupId>
                 <artifactId>htmlcleaner</artifactId>
                 <version>${htmlcleaner.version}</version>
+            </dependency>
+            <!-- 添加jedis客户端 -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>2.10.0</version>
+            </dependency>
+            <!--spring2.0集成redis所需common-pool2-->
+            <!-- 必须加上，jedis依赖此  -->
+            <!-- spring boot 2.0 的操作手册有标注 大家可以去看看 地址是：https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>2.5.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

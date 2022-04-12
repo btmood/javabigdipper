@@ -23,10 +23,11 @@ public class TestBst {
             bst.add(num);
         }
 
-        bst.levelOrder();
+//        bst.levelOrder();
 
-//        bst.preOrder();
-//        System.out.println();
+        bst.preOrder();
+        System.out.println();
+        System.out.println(bst.toString());
 //
 //        bst.preOrderNR();
 //        System.out.println();

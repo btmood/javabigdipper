@@ -14,6 +14,7 @@ public class BST<E extends Comparable<E>> {
 
     private class Node {
         public E e;
+        //每个节点都会有左节点和右节点，左右节点都可以为空
         public Node left, right;
 
         public Node(E e) {
@@ -23,10 +24,13 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+    //当前节点
     private Node root;
+    //元素个数
     private int size;
 
     public BST() {
+        //初始节点为null
         root = null;
         size = 0;
     }
@@ -43,40 +47,56 @@ public class BST<E extends Comparable<E>> {
      * 向二分搜索树中添加新元素e
      * @param e
      */
-    public void add(E e) {
+    @Deprecated
+    public void addDeprecated(E e) {
+        //如果当前BST为空，直接插入元素即可
         if (root == null) {
             root = new Node(e);
             size++;
         } else {
-            add(root, e);
+            //如果不为空，就需要从root开始插入
+            addDeprecated(root, e);
         }
     }
 
     /**
+     *
      * 向以Node为根的二分搜索树中插入元素E，递归算法
      * @param node
      * @param e
      */
-//    private void add(Node node, E e) {
-//        //递归的终止条件
-//        if (e.equals(node.e)) {
-//            return;
-//        } else if (e.compareTo(node.e) < 0 && node.left == null) {
-//            node.left = new Node(e);
-//            size++;
-//            return;
-//        } else if (e.compareTo(node.e) > 0 && node.right == null) {
-//            node.right = new Node(e);
-//            size++;
-//            return;
-//        }
-//        //再次递归
-//        if (e.compareTo(node.e) < 0) {
-//            add(node.left, e);
-//        } else {
-//            add(node.right, e);
-//        }
-//    }
+    @Deprecated
+    private void addDeprecated(Node node, E e) {
+        //1.递归的终止条件
+        //只要是重复元素直接抛弃
+        if (e.equals(node.e)) {
+            return;
+        //左节点为空，并且待插入元素小于当前节点，那么直接插入即可
+        } else if (e.compareTo(node.e) < 0 && node.left == null) {
+            node.left = new Node(e);
+            size++;
+            return;
+        //右节点为空，并且待插入元素小于当前节点，那么直接插入即可
+        } else if (e.compareTo(node.e) > 0 && node.right == null) {
+            node.right = new Node(e);
+            size++;
+            return;
+        }
+        //2. 再次递归，分解问题
+        if (e.compareTo(node.e) < 0) {
+            add(node.left, e);
+        } else {
+            add(node.right, e);
+        }
+    }
+
+    /**
+     * 添加元素
+     * @param e
+     */
+    public void add(E e) {
+        root = add(root, e);
+    }
 
     /**
      * 递归代码优化：返回插入新节点后二分搜索书的根
@@ -96,6 +116,7 @@ public class BST<E extends Comparable<E>> {
         /**
          * 分解问题
          * 注意add()方法的宏观语义：添加新节点，并返回二叉树的根，那么我们只需要直接调用add()方法即可，不需要考虑微观实现
+         * 只有插入节点的操作，才会导致返回的node发生改变（本来是null，现在返回新的node对象）
          */
         if (e.compareTo(node.e) < 0) {
             node.left = add(node.left, e);
@@ -121,16 +142,28 @@ public class BST<E extends Comparable<E>> {
      * @return
      */
     private boolean contains(Node node, E e) {
+        //最简问题：二叉树是null，那么直接返回false就可以了
         if (node == null) {
             return false;
         }
+        //相同就返回 true
         if (e.compareTo(node.e) == 0) {
             return true;
         } else if (e.compareTo(node.e) < 0) {
+            //这里说明传入的元素存在在左子树中，那么我们按照contains方法的宏观语义，再次调用这个方法就可以了
             return contains(node.left, e);
         } else {
             return contains(node.right, e);
         }
+    }
+
+    /**
+     * TODO：非递归实现
+     * @param e
+     * @return
+     */
+    public boolean containsNR(E e) {
+        return true;
     }
 
     /**
@@ -222,6 +255,7 @@ public class BST<E extends Comparable<E>> {
 
     /**
      * 二分搜索树的后序遍历
+     * 左右根
      */
     public void postOrder() {
         postOrder(root);
@@ -469,6 +503,12 @@ public class BST<E extends Comparable<E>> {
         return res.toString();
     }
 
+    /**
+     *
+     * @param node 当前节点
+     * @param depth 深度
+     * @param res 打印字符串
+     */
     public void generateBSTString(Node node, int depth, StringBuilder res) {
         if (node == null) {
             res.append(generateDepthString(depth) + "null\n");
@@ -480,6 +520,7 @@ public class BST<E extends Comparable<E>> {
         generateBSTString(node.right, depth + 1, res);
     }
 
+    //深度字符串
     private String generateDepthString(int depth) {
         StringBuilder res = new StringBuilder();
         for (int i = 0; i < depth; i++) {

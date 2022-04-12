@@ -32,4 +32,14 @@ public class TestAll {
         System.out.println(~(a - 1));
     }
 
+    @Test
+    public void test(){
+        String [] s = new String []{"asd,asd,asd,asd,asd"};
+        System.out.println("asd,asd,asd,asd,asd");
+    }
+
+    public static void main(String[] args) {
+
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.lark.algorithm.everyday.d1;
 
+import org.springframework.util.StringUtils;
+
 import java.util.ArrayList;
 
 /**
@@ -43,13 +45,42 @@ public class N20Q58 {
         ArrayList<String> list = new ArrayList<>();
         String[] split = s.split(" ");
         for (String temp : split) {
-            list.add(temp.trim());
+            if (!"".equals(temp)) {
+                list.add(temp.trim());
+            }
         }
         return list.get(list.size() - 1).length();
     }
 
     public int lengthOfLastWord2(String s) {
+        int empty = 0;
+        int last = 0;
+        int len = s.length();
+        for (int i = len - 1; i >= 0; i--) {
+            if (String.valueOf(s.charAt(i)).equals(" ")) {
+                if (last > 0) {
+                    return len - 1 - i - empty;
+                } else {
+                    empty++;
+                }
+            } else {
+                last++;
+            }
+        }
+        return len - empty;
+    }
 
+    public int lengthOfLastWord3(String s) {
+        int index = s.length() - 1;
+        while (s.charAt(index) == ' ') {
+            index--;
+        }
+        int wordLength = 0;
+        while (index >= 0 && s.charAt(index) != ' ') {
+            wordLength++;
+            index--;
+        }
+        return wordLength;
     }
 
 }

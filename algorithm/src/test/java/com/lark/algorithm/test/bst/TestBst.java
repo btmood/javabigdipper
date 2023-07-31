@@ -1,7 +1,6 @@
 package com.lark.algorithm.test.bst;
 
-import com.lark.algorithm.array.Array;
-import com.lark.algorithm.bst.BST;
+import com.lark.algorithm.study.bst.BST;
 import org.junit.Test;
 
 import java.util.ArrayList;

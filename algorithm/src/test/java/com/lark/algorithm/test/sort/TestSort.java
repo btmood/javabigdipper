@@ -1,13 +1,5 @@
 package com.lark.algorithm.test.sort;
 
-import com.lark.algorithm.sort.HeapSort;
-import com.lark.algorithm.sort.QuickSort;
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * @author btmood
  * @date 2021-09-24 20:15

@@ -1,8 +1,8 @@
 package com.lark.algorithm.test.queue;
 
-import com.lark.algorithm.queue.ArrayQueue;
-import com.lark.algorithm.queue.LinkedListQueue;
-import com.lark.algorithm.queue.LoopQueue;
+import com.lark.algorithm.study.queue.ArrayQueue;
+import com.lark.algorithm.study.queue.LinkedListQueue;
+import com.lark.algorithm.study.queue.LoopQueue;
 import org.junit.Test;
 
 /**

@@ -1,9 +1,5 @@
 package com.lark.algorithm.everyday.d1;
 
-import com.lark.algorithm.array.Array;
-import org.apache.commons.collections.CollectionUtils;
-import sun.reflect.generics.tree.Tree;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

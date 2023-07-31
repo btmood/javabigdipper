@@ -1,6 +1,6 @@
 package com.lark.algorithm.test.likedlist;
 
-import com.lark.algorithm.linkedlist.LinkedList;
+import com.lark.algorithm.study.linkedlist.LinkedList;
 import org.junit.Test;
 
 /**

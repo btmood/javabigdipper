@@ -1,8 +1,7 @@
 package com.lark.algorithm.test.stack;
 
-import com.lark.algorithm.linkedlist.LinkedList;
-import com.lark.algorithm.stack.ArrayStack;
-import com.lark.algorithm.stack.LinkedListStack;
+import com.lark.algorithm.study.stack.ArrayStack;
+import com.lark.algorithm.study.stack.LinkedListStack;
 import org.junit.Test;
 
 /**

@@ -1,6 +1,6 @@
 package com.lark.algorithm.test.heap;
 
-import com.lark.algorithm.heap.MaxHeap;
+import com.lark.algorithm.study.heap.MaxHeap;
 import org.junit.Test;
 
 import java.util.Random;

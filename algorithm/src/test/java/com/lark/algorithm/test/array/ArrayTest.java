@@ -1,7 +1,7 @@
 package com.lark.algorithm.test.array;
 
-import com.lark.algorithm.array.Array;
-import com.lark.algorithm.array.ArrayInt;
+import com.lark.algorithm.study.array.Array;
+import com.lark.algorithm.study.array.ArrayInt;
 import org.junit.Test;
 
 /**
